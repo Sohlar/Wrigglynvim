@@ -1,0 +1,24 @@
+snippet func "Function"
+$1 $2($3,$4){
+	$0
+}
+endsnippet
+snippet main "Main Template"
+int main(int argc, char* argv[]){
+	$0
+	return 0;
+}
+endsnippet
+snippet /* "Comment"
+/*
+* @Returns: $1
+* @Takes: $2
+* @ExtraNotes: $0
+*/
+endsnippet
+snippet section_comment "Format comment for segmenting code"
+//##########################$0#####################################
+endsnippet
+snippet section_comment_end "End Format comment for segmenting code"
+//##########################END####################################
+endsnippet
