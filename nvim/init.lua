@@ -12,7 +12,11 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'  
   -- Debugger
-  use 'mfussenegger/nvim-dap'
+  use {
+    "williamboman/mason.nvim",
+    "mfussenegger/nvim-dap",
+    "jay-babu/mason-nvim-dap.nvim",
+  }
   use 'rcarriga/nvim-dap-ui'
   use 'theHamsta/nvim-dap-virtual-text'
   use 'nvim-telescope/telescope-dap.nvim'
@@ -385,6 +389,30 @@ dap.adapters.lldb = {
   -- absolute path is important here, otherwise the argument in the `runInTerminal` request will default to $CWD/lldb-vscode
   command = '/usr/bin/lldb-vscode',
   name = "lldb"
+}
+dap.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = {os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js'},
+}
+dap.configurations.javascript = {
+  {
+    name = 'Launch',
+    type = 'node2',
+    request = 'launch',
+    program = '${file}',
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = 'inspector',
+    console = 'integratedTerminal',
+  },
+  {
+    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+    name = 'Attach to process',
+    type = 'node2',
+    request = 'attach',
+    processId = require'dap.utils'.pick_process,
+  },
 }
 dap.configurations.cpp = {
   {
@@ -813,7 +841,7 @@ local servers = {
   -- rust_analyzer = {},
   tsserver = {},
 
-  sumneko_lua = {
+  lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
@@ -830,7 +858,10 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Setup mason so it can manage external tooling
 require('mason').setup()
-
+require('mason-nvim-dap').setup({
+  ensure_installed={"python", "js-debug-adapter"},
+  automatic_setup = true,
+})
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
