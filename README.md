@@ -1,4 +1,4 @@
-Neovim Configuration
+#Neovim Configuration
 
 This repository contains a Neovim configuration with a variety of plugins and settings. The configuration is written in Lua and uses packer.nvim as a package manager.
 Prerequisites
@@ -7,10 +7,10 @@ Prerequisites
 - Git
 Installation
 
-1. Clone this repository into your Neovim configuration directory. For Unix-based systems, this is typically ~/.config/nvim/.
+##1. Clone this repository into your Neovim configuration directory. For Unix-based systems, this is typically ~/.config/nvim/.
 nvim
 
-2. Open Neovim and the plugins will be installed automatically.
+##2. Open Neovim and the plugins will be installed automatically.
 nvim
 Plugins
 
