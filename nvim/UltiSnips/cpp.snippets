@@ -13,7 +13,7 @@ snippet /* "Comment"
 /*
 * @Returns: $1
 * @Takes: $2
-* @ExtraNotes: $0
+* @ExtraNotes: $3
 */
 endsnippet
 snippet section_comment "Format comment for segmenting code"
@@ -21,4 +21,9 @@ snippet section_comment "Format comment for segmenting code"
 endsnippet
 snippet section_comment_end "End Format comment for segmenting code"
 //##########################END####################################
+endsnippet
+snippet #ifndef "Import Guard"
+#ifndef $1
+#define $1
+#endif
 endsnippet
