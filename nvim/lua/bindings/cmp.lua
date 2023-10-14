@@ -1,6 +1,12 @@
-
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
+	return
+end
+local status_ok, luasnip = pcall(require, "luasnip")
+if not status_ok then
+	return
+end
 -- nvim-cmp setup
-local cmp = require 'cmp'
 local kind_icons = {
 	Text = "",
 	Method = "",
@@ -28,8 +34,6 @@ local kind_icons = {
 	Operator = "",
 	TypeParameter = ""
 }
-local luasnip = require 'luasnip'
-
 cmp.setup {
 	snippet = {
 		--expand = function(args)

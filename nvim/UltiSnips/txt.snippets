@@ -1,0 +1,9 @@
+snippet set "AddLib"
+	set($1${VISUAL} ${0:$1}.cpp)
+	add_library($2 STATIC "${`${0:$1}`}")
+endsnippet
+
+snippet add "AddExecutable"
+	add_executable($1${VISUAL} main.cpp)
+	target_link_libraries(${0:$1} udplib)
+endsnippet

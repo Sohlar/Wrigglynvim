@@ -1,0 +1,8 @@
+snippet #pragma "Guard out multiple includes"
+#pragma once
+endsnippet
+snippet #ifndef "Guard for old compilers"
+#ifndef $1:${VISUAL}
+#define ${0:$1}
+#endif
+endsnippet
