@@ -40,6 +40,7 @@ require('packer').startup(function(use)
 	use 'rcarriga/nvim-dap-ui'
 	use 'theHamsta/nvim-dap-virtual-text'
 	use 'nvim-telescope/telescope-dap.nvim'
+
 	-- nerdtree
 	use {
 		'nvim-tree/nvim-tree.lua',
@@ -69,11 +70,11 @@ require('packer').startup(function(use)
 	use {
 		'j-hui/fidget.nvim',
 		tag = 'legacy',
-	  config = function()
-		require("fidget").setup {
-		  -- options
-		}
-	  end,
+		config = function()
+			require("fidget").setup {
+				-- options
+			}
+		end,
 	}
 	-- Sneak clone
 	use {
@@ -99,6 +100,7 @@ require('packer').startup(function(use)
 			config = function()
 				local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 				require("cmp").setup({
+					revision = "enabled",
 					snippet = {
 						expand = function(args)
 							vim.fn["UltiSnips#Anon"](args.body)
