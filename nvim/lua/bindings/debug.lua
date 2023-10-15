@@ -1,16 +1,12 @@
-local status_ok, dui = pcall(require, "dapui")
-if not status_ok then
-	return
-end
+local dui = require 'dapui'
 -- Toggle dapui window
 local ToggleUI = true
 function ToggleDBG()
-	local dapui = require 'dapui'
 	if ToggleUI then
-		dapui.open({})
+		dui.open({})
 		ToggleUI = false
 	else
-		dapui.close({})
+		dui.close({})
 		ToggleUI = true
 	end
 end
@@ -21,10 +17,10 @@ vim.keymap.set("n", "<A-2>", ":lua require'dap'.step_over()<CR>")
 vim.keymap.set("n", "<A-3>", ":lua require'dap'.step_into()<CR>")
 vim.keymap.set("n", "<A-4>", ":lua require'dap'.step_out()<CR>")
 vim.keymap.set("n", "<A-5>", ":lua require'dap'.close()<CR>")
-vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
-vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<A-b>", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<A-B>", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil,nil,vim.fn.input('Log point message: '))<CR>")
-vim.keymap.set("n", "<leader>od", ToggleDBG)
+vim.keymap.set("n", "<A-o><A-d>", ToggleDBG, {remap=true,desc="Toggle Debug UI"})
 --vim.keymap.set("n", "<leader>ow", ":lua require'dapui'.float_element(scopes, {width=40, height=20, enter=true, position=right})<CR>")
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
 vim.keymap.set("n", "<leader>ae", ":lua require'dapui'.eval()<CR>")
@@ -33,7 +29,7 @@ function Wfloat()
 	dui.float_element("watches",{enter=true, width=20, height=30, position="right"})
 end
 --dapui keymap
-vim.keymap.set("n", "<leader>ow", Wfloat, {noremap=true,desc="Open window"})
+vim.keymap.set("n", "<leader>ow", Wfloat, {desc="Open window"})
 
 --Vim debug settings
 require('nvim-dap-virtual-text').setup({commented=true})
