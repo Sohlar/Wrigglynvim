@@ -17,6 +17,7 @@ require "bindings.lsp"
 require "bindings.neoscroll"
 require "bindings.highlight"
 require "bindings.comment"
+require "bindings.compiler-explorer"
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -27,10 +28,15 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 	vim.cmd [[packadd packer.nvim]]
 end
 
-
 require('packer').startup(function(use)
 	-- Package manager
 	use 'wbthomason/packer.nvim'
+	-- Compiler Explorer
+	use 'krady21/compiler-explorer.nvim'
+	-- Better Notifications
+	use 'rcarriga/nvim-notify'
+	-- Dressings like telescope uses
+	use {'stevearc/dressing.nvim'}
 	-- Debugger
 	use {
 		"williamboman/mason.nvim",

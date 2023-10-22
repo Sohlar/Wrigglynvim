@@ -16,7 +16,7 @@ vim.keymap.set('n', '<A-r>', '<cmd>winc R<cr>', { desc = "Swap window position" 
 -- Set window to maxHeight
 vim.keymap.set('n', '<A-_>', '<cmd>winc _<cr>', { desc = "Set window size to max height" })
 -- Quit Window
-vim.keymap.set('n', '<A-->', '<cmd>q<cr>', { desc = "Quit" })
+vim.keymap.set('n', '<A-q>', '<cmd>q<cr>', { desc = "Quit" })
 -- Custom window navigation hjkl keys for movement
 vim.keymap.set('n', '<A-h>', '<cmd>winc h<cr>', { desc = "Move to window left" })
 vim.keymap.set('n', '<A-j>', '<cmd>winc j<cr>', { desc = "Move to window down" })

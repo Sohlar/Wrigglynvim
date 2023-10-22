@@ -104,6 +104,16 @@ function SearchDiag()
 end
 
 -- Search Help Diagnostics
+function SearchKeys()
+	--require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown{})
+	if ThemeOptions == 0 then
+		require('telescope.builtin').keymaps(require('telescope.themes').get_dropdown(OptsIn))
+	elseif ThemeOptions == 1 then
+		require('telescope.builtin').keymaps(require('telescope.themes').get_ivy(OptsIn))
+	end
+end
+
+-- Search Help Diagnostics
 function SearchFiles()
 	--require('telescope.builtin').diagnostics(require('telescope.themes').get_dropdown{})
 	if ThemeOptions == 0 then
@@ -120,3 +130,4 @@ vim.keymap.set('n', '<leader>sh', HelpSearch, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', GrepStr, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', LiveGrep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', SearchDiag, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sk', SearchKeys, { desc = '[S]earch [K]eys' })
