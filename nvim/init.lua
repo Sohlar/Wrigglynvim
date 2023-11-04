@@ -1,23 +1,3 @@
--- Includes
-require "bindings.aerial"
-require "bindings.nvimtree"
-require "bindings.debug"
-require "bindings.lldb"
-require "bindings.indent"
-require "bindings.base"
-require "bindings.telescope"
-require "bindings.lualine"
-require "bindings.cpp"
-require "bindings.cmp"
-require "bindings.gitsigns"
-require "bindings.hop"
-require "bindings.window"
-require "bindings.treesitter"
-require "bindings.lsp"
-require "bindings.neoscroll"
-require "bindings.highlight"
-require "bindings.comment"
-require "bindings.compiler-explorer"
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -198,6 +178,26 @@ if is_bootstrap then
 	print '=================================='
 	return
 end
+-- Includes
+require "bindings.aerial"
+require "bindings.nvimtree"
+require "bindings.debug"
+require "bindings.lldb"
+require "bindings.indent"
+require "bindings.base"
+require "bindings.telescope"
+require "bindings.lualine"
+require "bindings.cpp"
+require "bindings.cmp"
+require "bindings.gitsigns"
+require "bindings.hop"
+require "bindings.window"
+require "bindings.treesitter"
+require "bindings.lsp"
+require "bindings.neoscroll"
+require "bindings.highlight"
+require "bindings.comment"
+require "bindings.compiler-explorer"
 
 -- Automatically source and re-compile packer whenever you save this init.lua
 local packer_group = vim.api.nvim_create_augroup('Packer', { clear = true })
