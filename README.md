@@ -12,7 +12,7 @@ cd WrigglyNvim/utilities/install_scripts
 ./install_ubuntu.sh
 ```
 
-# Manual install 
+### Manual install 
 
 - Install npm python3-neovim neovim using your package manager.
 - cp the nvim directory to your nvim config location. 
