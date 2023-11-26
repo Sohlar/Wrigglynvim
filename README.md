@@ -32,6 +32,3 @@ Customization
 
 You can add your own plugins in the ~/.config/nvim/lua/bindings/custom_plugins.lua file. They will be loaded automatically.
 end
-Troubleshooting
-
-If you encounter any issues, please check the packer_compiled.lua file for error messages. If the issue persists, feel free to open an issue on the GitHub repository.
