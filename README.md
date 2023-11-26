@@ -2,14 +2,18 @@
 
 This repository contains a Neovim configuration with a variety of plugins and settings. The configuration is written in Lua and uses packer.nvim as a package manager.
 
-## Installation
-
 I've included install scripts for the major package managers this will also install a git hook that will merge changes when you pull from the repo.
+These will automatically install 
+- NPM
+- neovim
+- python3-neovim
+Then it will copy the config and the git hook previously mentioned to the appropriate directories for the user running the script.
+
+## Installation
 
 An example install on ubuntu would be.
 ```sh
-cd WrigglyNvim/utilities/install_scripts
-./install_ubuntu.sh
+cd WrigglyNvim/utilities/install_scripts && ./install_ubuntu.sh
 ```
 
 ### Manual install 
