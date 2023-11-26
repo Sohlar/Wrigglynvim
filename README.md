@@ -13,8 +13,7 @@ Then it will copy the config and the git hook previously mentioned to the approp
 
 An example install on ubuntu would be.
 ```sh
-cd WrigglyNvim/utilities/install_scripts
-./install_ubuntu.sh
+cd WrigglyNvim/utilities/install_scripts && ./install_ubuntu.sh
 ```
 
 ### Manual install 
