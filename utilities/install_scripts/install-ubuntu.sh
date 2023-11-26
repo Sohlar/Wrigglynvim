@@ -5,7 +5,7 @@ echo "Also If you'd like entering c will only copy the install and hook"
 read -p "Do you want to proceed? (y/n/c) " yn
 
 	 
-install_prereq (){ sudo apt-get install npm python3-neovim && sudo snap install --beta nvim --classic; }
+install_prereq (){ sudo snap install --beta nvim --classic && sudo apt-get install npm python3-neovim; }
 copy_conf (){ cp -r ../../nvim ~/.config; }
 copy_hook (){  cp ../hooks/post-merge ../../.git/hooks/; }
 
