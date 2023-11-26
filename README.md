@@ -28,7 +28,7 @@ The configuration includes the following plugins:
 - vim-rhubarb: GitHub extension for fugitive.vim.
 
 For a full list of plugins, please refer to the packer_compiled.lua file.
-Customization
 
+Customization
 You can add your own plugins in the ~/.config/nvim/lua/bindings/custom_plugins.lua file. They will be loaded automatically.
 end
