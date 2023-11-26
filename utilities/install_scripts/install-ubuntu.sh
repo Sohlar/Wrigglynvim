@@ -7,7 +7,7 @@ read -p "Do you want to proceed? (y/n/c) " yn
 	 
 install_prereq (){ sudo apt-get install npm python3-neovim && sudo snap install --beta nvim --classic; }
 copy_conf (){ cp -r ../../nvim ~/.config; }
-copy_hook (){  cp ../hooks/post-merge ../../nvim/.git/hooks/; }
+copy_hook (){  cp ../hooks/post-merge ../../.git/hooks/; }
 
 case $yn in 
 	y ) install_prereq && copy_conf && copy_hook ;;
