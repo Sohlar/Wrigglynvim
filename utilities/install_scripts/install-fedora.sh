@@ -1,10 +1,10 @@
 #!/bin/bash
 echo "I take no responsibility for your machine, I don't think this will do any harm to it however I feel I must include this disclaimer.Also If you'd like c will only copy the install and hook"
-read -p "Do you want to proceed? (y/n) " yn
+read -p "Do you want to proceed? (y/n/c) " yn
 
 install_prereq (){ sudo dnf install npm neovim python3-neovim; }
 copy_conf (){ cp -r ../../nvim ~/.config; }
-copy_hook (){  cp post-merge ../nvim/.git/hooks/; }
+copy_hook (){  cp ../hooks/post-merge ../../nvim/.git/hooks/; }
 
 case $yn in 
 	y ) install_prereq && copy_conf && copy_hook ;;
