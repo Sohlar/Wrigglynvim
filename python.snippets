@@ -1,0 +1,753 @@
+snippet class "standard class"
+class MyClass:
+  def __init__(self, param1, param2):
+    self.param1 = param1
+    self.param2 = param2
+
+  def method1(self):
+    return self.param1 + self.param2
+endsnippet
+
+snippet main "standard main"
+def main():
+    print("Hello, World!")
+
+if __name__ == "__main__":
+    main()
+endsnippet
+
+snippet mainclass "mainclass"
+class MyClass:
+    def __init__(self, name):
+        self.name = name
+
+    def greet(self):
+        return f"Hello, {self.name}!"
+
+def main():
+    my_object = MyClass("World")
+    print(my_object.greet())
+
+if __name__ == "__main__":
+    main()
+endsnippet
+
+snippet postgresconn "Connect to Postgres"
+import psycopg2
+
+conn = psycopg2.connect(
+    dbname="mydatabase",
+    user="mydatabaseuser",
+    password="mypassword",
+    host="localhost"
+)
+endsnippet
+
+snippet djangoModel "Simple Django model"
+from django.db import models
+
+class MyModel(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.name
+endsnippet
+
+snippet djangoView "Simple Django View"
+from django.shortcuts import render
+from .models import MyModel
+
+def my_view(request):
+    my_objects = MyModel.objects.all()
+    return render(request, 'my_template.html', {'my_objects': my_objects})
+endsnippet
+
+snippet stack "simple stack"
+class Stack:
+    def __init__(self):
+        self.stack = []
+
+    def push(self, item):
+        self.stack.append(item)
+
+    def pop(self):
+        if len(self.stack) < 1:
+            return None
+        return self.stack.pop()
+
+    def size(self):
+        return len(self.stack)
+endsnippet
+
+snippet queue "simple queue"
+class Queue:
+    def __init__(self):
+        self.queue = []
+
+    def enqueue(self, item):
+        self.queue.append(item)
+
+    def dequeue(self):
+        if len(self.queue) < 1:
+            return None
+        return self.queue.pop(0)
+
+    def size(self):
+        return len(self.queue)
+endsnippet
+
+snippet linkedlist "simple linked list"
+class Node:
+    def __init__(self, data=None):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+endsnippet
+
+snippet binarysearch "simple binary search"
+def binary_search(item_list, item):
+    low = 0
+    high = len(item_list) - 1
+
+    while low <= high:
+        mid = (low + high) // 2
+        if item_list[mid] == item:
+            return True
+        if item_list[mid] < item:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return False
+endsnippet
+
+snippet bubblesort "simple bubble sort"
+def bubble_sort(item_list):
+    for i in range(len(item_list)):
+        for j in range(len(item_list) - 1):
+            if item_list[j] > item_list[j+1]:
+                item_list[j], item_list[j+1] = item_list[j+1], item_list[j]
+endsnippet
+
+snippet quicksort "simple quick sort"
+def partition(array, low, high):
+    i = (low-1)
+    pivot = array[high]
+
+    for j in range(low, high):
+        if array[j] <= pivot:
+            i = i+1
+            array[i], array[j] = array[j], array[i]
+
+    array[i+1], array[high] = array[high], array[i+1]
+    return (i+1)
+
+def quick_sort(array, low, high):
+    if len(array) == 1:
+        return array
+    if low < high:
+        pi = partition(array, low, high)
+        quick_sort(array, low, pi-1)
+        quick_sort(array, pi+1, high)
+endsnippet
+
+snippet pandas "simple pandas"
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'A': [1, 2, 3, 4, 5],
+    'B': ['a', 'b', 'c', 'd', 'e'],
+})
+
+# Read a CSV file
+df = pd.read_csv('file.csv')
+
+# Save the result to a new CSV file
+df.to_csv('new_file.csv', index=False)
+
+# Display the DataFrame
+print(df)
+
+# Access a column
+print(df['A'])
+
+# Access a row
+print(df.loc[0])
+
+# Apply a function to a column
+df['A'] = df['A'].apply(lambda x: x * 2)
+endsnippet
+
+snippet numpy "simple numpy"
+import numpy as np
+
+# Create a NumPy array
+arr = np.array([1, 2, 3, 4, 5])
+
+# Display the array
+print(arr)
+
+# Access an element
+print(arr[0])
+
+# Slice the array
+print(arr[1:3])
+
+# Perform vectorized operations
+arr = arr * 2
+endsnippet
+
+snippet mpl "simple mpl"
+import matplotlib.pyplot as plt
+
+# Create a plot
+plt.plot([1, 2, 3, 4, 5], [1, 4, 9, 16, 25])
+
+# Show the plot
+plt.show()
+endsnippet
+
+snippet requests "simple post request"
+import requests
+
+data_dict = {'A':'2', 'B':'2'}
+
+res = requests.post('url', data_dict)
+data = res.json()
+endsnippet
+
+snippet classinheritance "Class with Inheritance"
+class ParentClass:
+    def method1(self):
+        print("This is a method in the parent class")
+
+class ChildClass(ParentClass):
+    def method2(self):
+        print("This is a method in the child class")
+
+# Usage
+obj = ChildClass()
+obj.method1()
+obj.method2()
+endsnippet
+
+snippet abstractbaseclass "Abstract Base Class"
+from abc import ABC, abstractmethod
+
+class AbstractClass(ABC):
+    @abstractmethod
+    def my_abstract_method(self):
+        pass
+
+class ConcreteClass(AbstractClass):
+    def my_abstract_method(self):
+        print("Implemented abstract method in concrete class")
+
+# Usage
+obj = ConcreteClass()
+obj.my_abstract_method()
+endsnippet
+
+snippet classstaticmethod "class & static method"
+class MyClass:
+    def __init__(self, param1, param2):
+        self.param1 = param1
+        self.param2 = param2
+
+    @classmethod
+    def from_tuple(cls, params):
+        return cls(*params)
+
+    @staticmethod
+    def static_method():
+        print("This is a static method")
+
+# Usage
+obj = MyClass.from_tuple((1, 2))
+obj.static_method()
+endsnippet
+
+snippet perf_timing_decorator "Performance Timing Decorator"
+import time
+
+def timing_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Function {func.__name__} took {(end_time - start_time)*1000} milliseconds to run.")
+        return result
+    return wrapper
+endsnippet
+
+snippet djangoView "New View, URL, Template"
+#views.py
+from django.http import HttpResponse
+
+def hello(request):
+    context = {'name', 'World'}
+    return render(request, 'myapp/hello.html', context)
+
+#urls.py
+from django.urls import path
+from .views import hello
+
+url_patterns = [
+    path('hello/', hello, name='hello')
+]
+
+#template
+from django.shortcuts import render
+
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Hello, {{ name }}!</h1>
+<body>
+<html>
+endsnippet
+
+snippet djangoModelComplex "Complex Django Model with Meta class and custom functionality"
+from django.db import models
+from django.core.validators import MinLengthValidator
+
+class MyModel(models.Model):
+    name = models.CharField(
+        max_length=200,
+        help_text="Enter the name of the item",
+        validators=[MinLengthValidator(2)]
+    )
+    description = models.TextField(help_text="Enter a description of the item")
+    related_model = models.ForeignKey('OtherModel', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "My Model"
+        verbose_name_plural = "My Models"
+        ordering = ['name']
+        indexes = [
+            models.Index(fields=['name'], name='name_idx'),
+        ]
+
+    def __str__(self):
+        return self.name
+
+    def get_absolute_url(self):
+        return reverse('model_detail', args=[str(self.id)])
+
+    def save(self, *args, **kwargs):
+        # custom save logic
+        super().save(*args, **kwargs)
+endsnippet
+
+snippet djangoModelOverview "Django Model Components" b
+"""
+DjangoModelComponents: 
+    Fields:  # Fields define the data type and behavior of the data that can be stored in an object.
+        BasicFields:  # Basic fields are the most common types of fields in Django models.
+            - BigIntegerField  # For storing big integers.
+            - BinaryField  # For storing binary data.
+            - BooleanField  # For storing boolean values.
+            - CharField  # For storing character data.
+            - DateField  # For storing date (year, month, day).
+            - DateTimeField  # For storing date and time.
+            - DecimalField  # For storing decimal numbers.
+            - DurationField  # For storing periods of time.
+            - EmailField  # For storing email addresses.
+            - FileField  # For storing files.
+            - FilePathField  # For storing file paths.
+            - FloatField  # For storing floating point numbers.
+            - ImageField  # For storing images.
+            - IntegerField  # For storing integers.
+            - GenericIPAddressField  # For storing IP addresses.
+            - NullBooleanField  # For storing boolean values, but can also store NULL.
+            - PositiveIntegerField  # For storing positive integers.
+            - PositiveSmallIntegerField  # For storing positive small integers.
+            - SlugField  # For storing short labels for things, containing only letters, numbers, underscores or hyphens.
+            - SmallIntegerField  # For storing small integers.
+            - TextField  # For storing large amounts of text.
+            - TimeField  # For storing time (hours, minutes, seconds).
+            - URLField  # For storing URLs.
+            - UUIDField  # For storing universally unique identifiers.
+            - AutoField  # An IntegerField that automatically increments.
+            - BigAutoField  # A BigIntegerField that automatically increments.
+            - SmallAutoField  # A SmallIntegerField that automatically increments.
+        RelationFields:  # Relation fields define a relation between two models.
+            - ForeignKey  # For a many-to-one relationship.
+            - OneToOneField  # For a one-to-one relationship.
+            - ManyToManyField  # For a many-to-many relationship.
+        SpecialFields:  # Special fields are for special types of relationships and data.
+            - GenericForeignKey  # For a generic many-to-one relationship.
+            - GenericRelation  # For a generic many-to-many relationship.
+    MetaOptions:  # Meta options allow you to customize the SQL table created for the model.
+        - abstract  # If True, this model will be an abstract base class.
+        - app_label  # The name of the application the model belongs to.
+        - base_manager_name  # The name of the manager to use for the model's base manager.
+        - db_table  # The name of the database table to use for the model.
+        - db_tablespace  # The name of the database tablespace to use for the model's database table.
+        - default_manager_name  # The name of the manager to use as the model's default manager.
+        - default_related_name  # The default name to use for the relation from the related object back to this one.
+        - get_latest_by  # The name of a DateField or DateTimeField in the model.
+        - managed  # If False, no database table creation or deletion operations will be performed for this model.
+        - ordering  # The default ordering for the model.
+        - permissions  # Extra permissions to include in the User model's permissions.
+        - default_permissions  # The default permissions for the model.
+        - indexes  # A list of indexes to create for the model.
+        - unique_together  # A list of lists of fields that must be unique when considered together.
+        - index_together  # A list of lists of fields that should be indexed together.
+        - constraints  # A list of constraints to create for the model.
+        - verbose_name  # A human-readable name for the model.
+        - verbose_name_plural  # The plural name for the model.
+    Methods:  # Methods are functions that are part of each instance of the model.
+        - __str__  # Returns a string representation of the model.
+        - get_absolute_url  # Returns the canonical URL for the model.
+        - save  # Saves the model.
+        - delete  # Deletes the model.
+        - clean  # Validates the model.
+        - clean_fields  # Validates all fields on the model.
+        - validate_unique  # Checks if the model's fields are unique.
+        - unique_error_message  # Returns a unique error message for the model.
+        - serializable_value  # Returns the value of the field to be serialized.
+        - get_next_by_FOO  # Returns the next model by the given date field FOO.
+        - get_previous_by_FOO  # Returns the previous model by the given date field FOO.
+    Managers:  # Managers are instances of django.db.models.Manager that control the database query operations of a model.
+        - Default (objects)  # The default manager for the model.
+        - Custom managers  # Custom managers you've created for the model.
+    Properties:  # Properties are like fields, but they are not stored in the database.
+        - Custom properties  # Custom properties you've created for the model.
+    Signals:  # Signals allow certain senders to notify a set of receivers when a certain action has taken place.
+        - pre_init  # Sent before the model's __init__ method is called.
+        - post_init  # Sent after the model's __init__ method is called.
+        - pre_save  # Sent before the model's save method is called.
+        - post_save  # Sent after the model's save method is called.
+        - pre_delete  # Sent before the model's delete method is called.
+        - post_delete  # Sent after the model's delete method is called.
+        - m2m_changed  # Sent when a ManyToManyField on the model changes.
+        - class_prepared  # Sent when a model class has been defined and registered with Django's model system.
+        - pre_migrate  # Sent before a set of database migrations are applied.
+        - post_migrate  # Sent after a set of database migrations are applied.
+    Inheritance:  # Django models can inherit from other models.
+        - Abstract base classes  # Base classes that contain fields and behaviors to include in multiple child models.
+        - Multi-table inheritance  # Each model in the inheritance chain is stored in its own database table.
+        - Proxy models  # A model that behaves the same as another model, but can have different Python behaviors.
+    Indexes:  # Indexes are used to speed up database queries involving the indexed fields.
+        - db_index  # If True, a database index will be created for this field.
+        - Index  # Defines a database index for one or multiple fields.
+        - UniqueConstraint  # Defines a unique constraint for one or multiple fields.
+        - CheckConstraint  # Defines a check constraint for the model.
+    Validators:  # Validators are used to check the values of fields for compliance with certain rules.
+        - Built-in validators  # Validators that are included with Django.
+        - Custom validators  # Validators that you've created.
+    Choices:  # Some fields, like CharField and IntegerField, can have a choices parameter.
+        - Field choices  # This provides a way of limiting the values that a field can have in the database.
+    InitMethod:  # You can override the __init__ method of a model.
+        - Custom __init__ method  # This allows you to customize the initialization of model instances.
+    ModelMetaOptions:  # There are more options available in the Meta class of a model.
+        - permissions  # Extra permissions to include in the User model's permissions.
+        - default_permissions  # The default permissions for the model.
+        - get_latest_by  # The name of a DateField or DateTimeField in the model.
+        - managed  # If False, no database table creation or deletion operations will be performed for this model.
+        - db_tablespace  # The name of the database tablespace to use for the model's database table.
+        - abstract  # If True, this model will be an abstract base class.
+        - app_label  # The name of the application the model belongs to.
+    CustomSQL:  # If Django's database API doesn't provide what you need, you can write custom SQL queries.
+        - Custom SQL queries  # These are your own SQL queries.
+    MultipleDatabases:  # Django provides a high-level, Pythonic API for managing multiple databases.
+        - Using multiple databases  # This allows you to use more than one database in your Django project.
+    DatabaseFunctions:  # Django provides a collection of database functions.
+        - Avg  # Returns the average value of a given expression.
+        - Count  # Returns the count of a given expression.
+        - Min  # Returns the minimum value of a given expression.
+        - Max  # Returns the maximum value of a given expression.
+        - Sum  # Returns the sum of a given expression.
+        - Coalesce  # Returns the first non-null value of the expressions passed to it.
+        - Concat  # Concatenates the values of the expressions passed to it.
+        - Length  # Returns the length of a given expression.
+        - Lower  # Converts a string expression to lowercase.
+        - Upper  # Converts a string expression to uppercase.
+        - Substr  # Returns a substring of a given expression.
+        - Now  # Returns the current date and time.
+        - TruncDate  # Truncates a date expression to 'day' precision.
+        - TruncTime  # Truncates a time expression to 'second' precision.
+        - TruncYear  # Truncates a date expression to 'year' precision.
+        - TruncMonth  # Truncates a date expression to 'month' precision.
+        - TruncDay  # Truncates a date expression to 'day' precision.
+        - TruncHour  # Truncates a time expression to 'hour' precision.
+        - TruncMinute  # Truncates a time expression to 'minute' precision.
+        - TruncSecond  # Truncates a time expression to 'second' precision.
+        - ExtractYear  # Extracts the year from a date expression.
+        - ExtractMonth  # Extracts the month from a date expression.
+        - ExtractDay  # Extracts the day from a date expression.
+        - ExtractWeek  # Extracts the week from a date expression.
+        - ExtractWeekDay  # Extracts the weekday from a date expression.
+        - ExtractHour  # Extracts the hour from a time expression.
+        - ExtractMinute  # Extracts the minute from a time expression.
+        - ExtractSecond  # Extracts the second from a time expression.
+        - F  # An F() object represents the value of a model field or annotated column.
+        - Func  # The base class for all functions in the django.db.models.functions module.
+        - Value  # An object that can be used in an expression to represent a value.
+        - Window  # Provides a way to use window functions in queries.
+    DatabaseTransactions:  # Django provides a few ways to control database transactions.
+        - atomic  # This is a transaction that is either fully completed or not executed at all.
+        - non_atomic_requests  # This is a decorator that activates non-atomic requests for a view function.
+        - set_autocommit  # This function enables or disables the autocommit mode for the current transaction.
+        - get_autocommit  # This function returns the current autocommit mode.
+        - commit  # This function commits the current transaction.
+        - rollback  # This function rolls back the current transaction.
+"""
+endsnippet
+snippet djangoViewSyntax "Django Views" b
+"""
+DjangoViews:
+    FunctionBasedViews:  # Simple views based on Python functions.
+        - View function: 
+            def my_view(request):
+                # View logic here
+                return HttpResponse('response')
+        - HttpRequest object: 
+            def my_view(request):
+                user = request.user
+                # More logic here
+        - HttpResponse object: 
+            def my_view(request):
+                return HttpResponse('Hello, World!')
+        - HttpResponseRedirect: 
+            def my_view(request):
+                return HttpResponseRedirect('/redirect-url/')
+        - render(): 
+            def my_view(request):
+                return render(request, 'my_template.html', {'key': 'value'})
+        - get_object_or_404(): 
+            def my_view(request, pk):
+                my_object = get_object_or_404(MyModel, pk=pk)
+                # More logic here
+        - redirect(): 
+            def my_view(request):
+                return redirect('url-name')
+    ClassBasedViews:  # Views based on Python classes.
+        - View class: 
+            from django.views import View
+
+            class MyView(View):
+                def get(self, request):
+                    # View logic here
+                    return HttpResponse('response')
+        - TemplateView: 
+            from django.views.generic import TemplateView
+
+            class MyTemplateView(TemplateView):
+                template_name = 'my_template.html'
+        - ListView: 
+            from django.views.generic import ListView
+            from myapp.models import MyModel
+
+            class MyListView(ListView):
+                model = MyModel
+        - DetailView: 
+            from django.views.generic import DetailView
+            from myapp.models import MyModel
+
+            class MyDetailView(DetailView):
+                model = MyModel
+        - CreateView: 
+            from django.views.generic.edit import CreateView
+            from myapp.models import MyModel
+
+            class MyCreateView(CreateView):
+                model = MyModel
+                fields = ['field1', 'field2']
+        - UpdateView: 
+            from django.views.generic.edit import UpdateView
+            from myapp.models import MyModel
+
+            class MyUpdateView(UpdateView):
+                model = MyModel
+                fields = ['field1', 'field2']
+        - DeleteView: 
+            from django.views.generic.edit import DeleteView
+            from myapp.models import MyModel
+
+            class MyDeleteView(DeleteView):
+                model = MyModel
+                success_url = '/success-url/'
+    Mixins:  # Mixins are a form of multiple inheritance for classes.
+        - LoginRequiredMixin: 
+            from django.contrib.auth.mixins import LoginRequiredMixin
+            from django.views.generic import TemplateView
+
+            class MyView(LoginRequiredMixin, TemplateView):
+                template_name = 'my_template.html'
+        - PermissionRequiredMixin: 
+            from django.contrib.auth.mixins import PermissionRequiredMixin
+            from django.views.generic import TemplateView
+
+            class MyView(PermissionRequiredMixin, TemplateView):
+                template_name = 'my_template.html'
+                permission_required = 'myapp.change_mymodel'
+        - MultipleObjectMixin: 
+            from django.views.generic.list import MultipleObjectMixin
+            from django.views import View
+
+            class MyView(MultipleObjectMixin, View):
+                model = MyModel
+                # More logic here
+        - SingleObjectMixin: 
+            from django.views.generic.detail import SingleObjectMixin
+            from django.views import View
+
+            class MyView(SingleObjectMixin, View):
+                model = MyModel
+                # More logic here
+    Decorators:  # Decorators are a way to modify the behavior of a function or class.
+        - login_required: 
+            from django.contrib.auth.decorators import login_required
+
+            @login_required
+            def my_view(request):
+                # View logic here
+        - permission_required: 
+            from django.contrib.auth.decorators import permission_required
+
+            @permission_required('myapp.change_mymodel')
+            def my_view(request):
+                # View logic here
+        - require_POST: 
+            from django.views.decorators.http import require_POST
+
+            @require_POST
+            def my_view(request):
+                # View logic here
+        - require_GET: 
+            from django.views.decorators.http import require_GET
+
+            @require_GET
+            def my_view(request):
+                # View logic here
+"""
+endsnippet
+snippet djangoViewOverview "Django Views" b
+"""
+DjangoViews:
+    FunctionBasedViews:  # Simple views based on Python functions.
+        - View function  # A Python function that takes a Web request and returns a Web response.
+        - HttpRequest object  # An object that contains metadata about a request.
+        - HttpResponse object  # An object that serves as a response from the view.
+        - HttpResponseRedirect  # A response object that redirects to a new URL.
+        - render()  # A shortcut function that combines a given template with a given context dictionary and returns an HttpResponse object with that rendered text.
+        - get_object_or_404()  # A shortcut function that returns the object that matches the given lookup parameters or raises a Http404 exception if the object does not exist.
+        - redirect()  # A shortcut function to create HttpResponseRedirect with the appropriate URL.
+    ClassBasedViews:  # Views based on Python classes.
+        - View class  # The base view class from which all views should inherit.
+        - TemplateView  # A view that renders a template and responds with the rendered text.
+        - ListView  # A view that displays a list of objects.
+        - DetailView  # A view that displays the details of a single object.
+        - CreateView  # A view that displays a form for creating an object, redisplaying the form with validation errors (if there are any) and saving the object.
+        - UpdateView  # A view that displays a form for updating an existing object, redisplaying the form with validation errors (if there are any) and saving the object.
+        - DeleteView  # A view that displays a confirmation page and deletes an existing object.
+    Mixins:  # Mixins are a form of multiple inheritance for classes.
+        - LoginRequiredMixin  # A mixin that requires a user to be logged in to access the view.
+        - PermissionRequiredMixin  # A mixin that requires a user to have a specific permission to access the view.
+        - MultipleObjectMixin  # A mixin that provides the ability to retrieve multiple objects.
+        - SingleObjectMixin  # A mixin that provides the ability to retrieve a single object.
+    Decorators:  # Decorators are a way to modify the behavior of a function or class.
+        - login_required  # A decorator that requires a user to be logged in to access the view.
+        - permission_required  # A decorator that requires a user to have a specific permission to access the view.
+        - require_POST  # A decorator that requires a view to be accessed with a POST request.
+        - require_GET  # A decorator that requires a view to be accessed with a GET request.
+"""
+endsnippet
+
+snippet djangoTemplates "Django Templates" b
+"""
+DjangoTemplates:
+    TemplateSyntax:  # Django's template language syntax.
+        - Variables  # Variables are surrounded by {{ and }} like this: {{ variable }}.
+        - Tags  # Tags provide arbitrary logic in the rendering process and are surrounded by {% and %} like this: {% tag %}.
+        - Filters  # Filters are used to modify the value of the variable and are denoted by a pipe (|) symbol.
+        - Comments  # Anything between {# and #} is ignored by the template engine.
+    TemplateInheritance:  # Django templates can inherit from other templates.
+        - {% extends "base.html" %}  # This tag is used to specify the parent template.
+        - {% block content %}  # This tag defines a block that can be overridden in child templates.
+        - {% endblock %}  # This tag ends a block.
+    TemplateTags:  # Django provides several built-in template tags.
+        - {% for %} and {% endfor %}  # For loop.
+        - {% if %}, {% elif %}, {% else %} and {% endif %}  # Conditional statements.
+        - {% include "template.html" %}  # Includes another template in this spot.
+        - {% load %}  # Loads a custom template tag set.
+        - {% csrf_token %}  # Adds a CSRF token in a POST form.
+        - {% url 'url_name' %}  # Renders the URL for the given view.
+        - {% static 'path/to/static/file' %}  # Renders the URL for the given static file.
+    TemplateFilters:  # Django provides several built-in template filters.
+        - {{ variable|lower }}  # Converts a string to all lowercase.
+        - {{ variable|upper }}  # Converts a string to all uppercase.
+        - {{ variable|length }}  # Returns the length of a string.
+        - {{ variable|date:"D d M Y" }}  # Formats a date according to the given format.
+        - {{ variable|default:"default_value" }}  # If variable is false or empty, use given default.
+    CustomTemplateTagsAndFilters:  # You can create your own template tags and filters.
+        - {% load custom_tags %}  # Loads the custom tags or filters for use on the template.
+"""
+endsnippet
+
+snippet djangoORMQuery "Query Creation"
+{
+    "CreatingQueries": {
+        "Description": "Creating queries involves using Django's database-abstraction API to filter, sort, and retrieve your data. Django's ORM allows you to construct a database query using Python syntax.",
+        "DocumentationLink": "https://docs.djangoproject.com/en/3.2/topics/db/queries/",
+        "Components": {
+            "RetrievingObjects": {
+                "Description": "You can retrieve objects from your database using the `.all()`, `.get()`, `.filter()`, and `.exclude()` methods on your model's manager (usually `objects`).",
+                "Examples": {
+                    "all": "Model.objects.all()",
+                    "get": "Model.objects.get(id=1)",
+                    "filter": "Model.objects.filter(name='John')",
+                    "exclude": "Model.objects.exclude(name='John')"
+                }
+            },
+            "ChainingFilters": {
+                "Description": "You can chain multiple filter/exclude clauses, which join together using AND semantics.",
+                "Example": "Model.objects.filter(name='John').exclude(city='London')"
+            },
+            "FieldLookups": {
+                "Description": "Field lookups allow you to use powerful SQL-like queries. They're specified as keyword arguments to the `filter()`, `exclude()`, and `get()` methods.",
+                "Examples": {
+                    "exact": "Model.objects.get(name__exact='John')",
+                    "iexact": "Model.objects.get(name__iexact='john')",
+                    "contains": "Model.objects.filter(name__contains='John')",
+                    "in": "Model.objects.filter(id__in=[1, 3, 4])",
+                    "gt": "Model.objects.filter(id__gt=4)",
+                    "lt": "Model.objects.filter(id__lt=4)",
+                    "gte": "Model.objects.filter(id__gte=4)",
+                    "lte": "Model.objects.filter(id__lte=4)"
+                }
+            },
+            "RelatedFields": {
+                "Description": "You can look up related models using the related model's lowercased name, followed by a double underscore, followed by the field name.",
+                "Example": "Entry.objects.filter(blog__name='Django')"
+            },
+            "ComplexLookups": {
+                "Description": "For complex queries, you can use `Q` objects combined with `|` (OR) and `&` (AND) operators.",
+                "Example": "Model.objects.filter(Q(question__startswith='Who') | Q(question__startswith='What'))"
+            },
+            "Aggregation": {
+                "Description": "Django provides several aggregation functions that you can use to calculate summary values for all the objects in a queryset or for groups of objects in the queryset.",
+                "Examples": {
+                    "average": "Model.objects.all().aggregate(Avg('price'))",
+                    "minimum": "Model.objects.all().aggregate(Min('price'))",
+                    "maximum": "Model.objects.all().aggregate(Max('price'))",
+                    "sum": "Model.objects.all().aggregate(Sum('price'))",
+                    "count": "Model.objects.all().count()"
+                }
+            },
+            "Ordering": {
+                "Description": "You can order the queryset by one or several fields using the `order_by` method.",
+                "Example": "Model.objects.order_by('name')"
+            }
+        }
+    }
+}
+endsnippet
